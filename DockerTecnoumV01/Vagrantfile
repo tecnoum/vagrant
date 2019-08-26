@@ -43,7 +43,8 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "scripts/", "/opt/scripts/"
+
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -104,17 +105,10 @@ Vagrant.configure("2") do |config|
      cp /docker/files/nginx/* /etc/nginx/conf.d/
      service nginx restart
 
-  ## subindo os serviços do docker
-    cd /docker/Compose/grafana
-    docker-compose up -d
-    cd /docker/Compose/jenkins
-    docker-compose up -d
-    cd /docker/Compose/syspass
-    docker-compose up -d
-    cd /docker/Compose/owncloud
-    docker-compose up -d
-    cd /docker/Compose/zabbix
-    docker-compose up -d
+  ## Ajustando o DNS do servidor
+     mkdir -p /opt/scripts/
+     sudo chmod +x /opt/scripts/nameserver.sh
+     ## OBS: Antes de executar os serviços execute dos conteiners execute o script acima.
 
   SHELL
 end
