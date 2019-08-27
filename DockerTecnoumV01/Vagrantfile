@@ -44,8 +44,7 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder "scripts/", "/opt/scripts/"
-
-
+  
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
@@ -92,22 +91,23 @@ Vagrant.configure("2") do |config|
      git clone https://github.com/tecnoum/docker.git
 
   ## Montando os diretórios dos serviços
-     mkdir -p /docker/filesystem/glpi
-     mkdir -p /docker/filesystem/grafana
-     mkdir -p /docker/filesystem/graylog
-     mkdir -p /docker/filesystem/jenkins
-     mkdir -p /docker/filesystem/owncloud
-     mkdir -p /docker/filesystem/syspass
-     mkdir -p /docker/filesystem/zabbix
-     chown 472:472 -R /docker/filesystem/grafana
+     mkdir -p /docker/filesystem/
+     #mkdir -p /docker/filesystem/glpi
+     #mkdir -p /docker/filesystem/grafana
+     #mkdir -p /docker/filesystem/graylog
+     #mkdir -p /docker/filesystem/jenkins
+     #mkdir -p /docker/filesystem/owncloud
+     #mkdir -p /docker/filesystem/syspass
+     #mkdir -p /docker/filesystem/zabbix
+     #chown 472:472 -R /docker/filesystem/grafana
   
   ## Copiando as configurações do NGINX e fazendo restart dos serviços
      cp /docker/files/nginx/* /etc/nginx/conf.d/
      service nginx restart
 
   ## Ajustando o DNS do servidor
-     mkdir -p /opt/scripts/
-     sudo chmod +x /opt/scripts/nameserver.sh
+     #mkdir -p /opt/scripts/
+     #sudo chmod +x /opt/scripts/nameserver.sh
      ## OBS: Antes de executar os serviços execute dos conteiners execute o script acima.
 
   SHELL
